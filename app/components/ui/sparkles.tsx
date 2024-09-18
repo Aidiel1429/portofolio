@@ -18,6 +18,7 @@ type ParticlesProps = {
   particleColor?: string;
   particleDensity?: number;
 };
+
 export const SparklesCore = (props: ParticlesProps) => {
   const {
     id,
@@ -68,7 +69,6 @@ export const SparklesCore = (props: ParticlesProps) => {
               enable: false,
               zIndex: 1,
             },
-
             fpsLimit: 120,
             interactivity: {
               events: {
@@ -80,7 +80,7 @@ export const SparklesCore = (props: ParticlesProps) => {
                   enable: false,
                   mode: "repulse",
                 },
-                resize: true as any,
+                resize: {}, // Update here
               },
               modes: {
                 push: {
@@ -378,50 +378,28 @@ export const SparklesCore = (props: ParticlesProps) => {
               },
               orbit: {
                 animation: {
-                  count: 0,
                   enable: false,
                   speed: 1,
-                  decay: 0,
-                  delay: 0,
                   sync: false,
                 },
                 enable: false,
                 opacity: 1,
+                width: 1,
                 rotation: {
-                  value: 45,
+                  value: 0,
                 },
-                width: 1,
-              },
-              links: {
-                blink: false,
-                color: {
-                  value: "#fff",
-                },
-                consent: false,
-                distance: 100,
-                enable: false,
-                frequency: 1,
-                opacity: 1,
-                shadow: {
-                  blur: 5,
-                  color: {
-                    value: "#000",
-                  },
-                  enable: false,
-                },
-                triangles: {
-                  enable: false,
-                  frequency: 1,
-                },
-                width: 1,
-                warp: false,
               },
               repulse: {
-                value: 0,
-                enabled: false,
-                distance: 1,
+                enable: true,
+                distance: 200,
                 duration: 1,
                 factor: 1,
+                speed: 1,
+                maxSpeed: 50,
+              },
+              warp: {
+                enable: false,
+                path: false,
                 speed: 1,
               },
             },

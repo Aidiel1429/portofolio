@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Tooltip from "./sosmed";
+import Image from "next/image";
 
 const AboutMe = ({ id }: { id: string }) => {
   return (
@@ -9,7 +10,12 @@ const AboutMe = ({ id }: { id: string }) => {
       className="lg:flex lg:justify-center lg:items-center p-14 lg:h-auto"
     >
       <div className="flex justify-center items-center">
-        <img src="/images/img.png" width={380} alt="" />
+        <Image
+          src="/images/img.png"
+          width={380}
+          height={380} // Tentukan height juga
+          alt="Profile Image"
+        />
       </div>
       <div className="divider lg:hidden"></div>
       <div className="divider divider-horizontal px-32 lg:flex"></div>
@@ -24,12 +30,13 @@ const AboutMe = ({ id }: { id: string }) => {
             </p>
             <p>
               I study at SMKN 1 Bangkinang City and majored in Game and Software
-              Development
+              Development.
             </p>
           </div>
         </div>
         <div>
-          <h1 className="font-bold text-2xl mb-2">Let's Be Friend</h1>
+          <h1 className="font-bold text-2xl mb-2">Let&#39;s Be Friend</h1>{" "}
+          {/* Menggunakan escape character */}
           <Tooltip />
         </div>
       </div>

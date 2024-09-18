@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useId, useState } from "react";
+
+import React, { useEffect, useId, useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRef } from "react";
 import { cn } from "@/lib/utils";
 import { SparklesCore } from "./sparkles";
 
@@ -13,7 +13,6 @@ export const Cover = ({
   className?: string;
 }) => {
   const [hovered, setHovered] = useState(false);
-
   const ref = useRef<HTMLDivElement>(null);
 
   const [containerWidth, setContainerWidth] = useState(0);
@@ -21,9 +20,9 @@ export const Cover = ({
 
   useEffect(() => {
     if (ref.current) {
-      setContainerWidth(ref.current?.clientWidth ?? 0);
+      setContainerWidth(ref.current.clientWidth);
 
-      const height = ref.current?.clientHeight ?? 0;
+      const height = ref.current.clientHeight;
       const numberOfBeams = Math.floor(height / 10); // Adjust the divisor to control the spacing
       const positions = Array.from(
         { length: numberOfBeams },
@@ -31,14 +30,14 @@ export const Cover = ({
       );
       setBeamPositions(positions);
     }
-  }, [ref.current]);
+  }, [ref]);
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       ref={ref}
-      className="relative hover:bg-neutral-900  group/cover inline-block dark:bg-neutral-900 bg-neutral-100 px-2 py-2  transition duration-200 rounded-sm"
+      className="relative hover:bg-neutral-900 group/cover inline-block dark:bg-neutral-900 bg-neutral-100 px-2 py-2 transition duration-200 rounded-sm"
     >
       <AnimatePresence>
         {hovered && (
@@ -91,7 +90,6 @@ export const Cover = ({
           key={index}
           hovered={hovered}
           duration={Math.random() * 2 + 1}
-          delay={Math.random() * 2 + 1}
           width={containerWidth}
           style={{
             top: `${position}px`,
@@ -138,9 +136,9 @@ export const Cover = ({
         {children}
       </motion.span>
       <CircleIcon className="absolute -right-[2px] -top-[2px]" />
-      <CircleIcon className="absolute -bottom-[2px] -right-[2px]" delay={0.4} />
-      <CircleIcon className="absolute -left-[2px] -top-[2px]" delay={0.8} />
-      <CircleIcon className="absolute -bottom-[2px] -left-[2px]" delay={1.6} />
+      <CircleIcon className="absolute -bottom-[2px] -right-[2px]" />
+      <CircleIcon className="absolute -left-[2px] -top-[2px]" />
+      <CircleIcon className="absolute -bottom-[2px] -left-[2px]" />
     </div>
   );
 };
@@ -179,7 +177,6 @@ export const Beam = ({
       <defs>
         <motion.linearGradient
           id={`svgGradient-${id}`}
-          key={String(hovered)}
           gradientUnits="userSpaceOnUse"
           initial={{
             x1: "0%",
@@ -210,17 +207,11 @@ export const Beam = ({
   );
 };
 
-export const CircleIcon = ({
-  className,
-  delay,
-}: {
-  className?: string;
-  delay?: number;
-}) => {
+export const CircleIcon = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        `pointer-events-none animate-pulse group-hover/cover:hidden group-hover/cover:opacity-100 group h-2 w-2 rounded-full bg-neutral-600 dark:bg-white opacity-20 group-hover/cover:bg-white`,
+        "pointer-events-none animate-pulse group-hover/cover:hidden group-hover/cover:opacity-100 group h-2 w-2 rounded-full bg-neutral-600 dark:bg-white opacity-20 group-hover/cover:bg-white",
         className
       )}
     ></div>
