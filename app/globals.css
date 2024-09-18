@@ -25,3 +25,13 @@ body {
     text-wrap: balance;
   }
 }
+
+*,
+html,
+body {
+  cursor: url();
+}
+
+html {
+  scroll-behavior: smooth;
+}

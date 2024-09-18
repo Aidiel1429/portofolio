@@ -4,15 +4,18 @@ import { HeroHighlight, Highlight } from "./ui/hero-highlight";
 import { motion } from "framer-motion";
 import Tooltip from "./sosmed";
 
-const AboutMe = () => {
+const AboutMe = ({ id }: { id: string }) => {
   return (
-    <div className="lg:flex lg:justify-center lg:items-center p-8 lg:h-auto">
+    <div
+      id={id}
+      className="lg:flex lg:justify-center lg:items-center p-14 lg:h-auto"
+    >
       <div className="flex justify-center items-center">
         <img src="/images/img.png" width={380} alt="" />
       </div>
       <div className="divider lg:hidden"></div>
       <div className="divider divider-horizontal px-32 lg:flex"></div>
-      <div className="lg:w-96">
+      <div className="md:px-20 lg:px-0 lg:w-96">
         <div className="mb-5">
           <h1 className="font-bold text-2xl mb-2">About Me</h1>
           <div className="text-sm">

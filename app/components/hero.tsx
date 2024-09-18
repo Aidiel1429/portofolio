@@ -13,9 +13,9 @@ const rowdies = Rowdies({
   display: "swap",
 });
 
-export function BackgroundHero() {
+export function BackgroundHero({ id }: { id: string }) {
   return (
-    <div>
+    <div id={id}>
       <BackgroundBeamsWithCollision>
         <div className="flex justify-center items-center flex-col">
           <h1 className="font-bold text-2xl md:text-4xl lg:text-6xl">
