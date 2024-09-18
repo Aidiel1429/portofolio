@@ -1,10 +1,8 @@
 "use client";
 import React from "react";
 import { BackgroundBeamsWithCollision } from "./ui/background-beams-with-collision";
-import { Cover } from "@/app/components/ui/cover";
-import { HeroHighlight, Highlight } from "./ui/hero-highlight";
+import { Highlight } from "./ui/hero-highlight";
 import { Rowdies } from "next/font/google";
-import Button from "./button";
 import Iam from "./iam";
 
 const rowdies = Rowdies({

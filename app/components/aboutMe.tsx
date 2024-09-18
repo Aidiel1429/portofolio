@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import { HeroHighlight, Highlight } from "./ui/hero-highlight";
-import { motion } from "framer-motion";
 import Tooltip from "./sosmed";
 
 const AboutMe = ({ id }: { id: string }) => {
